@@ -4,8 +4,9 @@
   "scripts": {
     "ng": "ng",
     "build:css": "tailwindcss -i src/styles.css -o src/app-styles.css --minify",
+    "build:post": "cp -r dist/money-masterclass/browser/* dist/money-masterclass/ 2>/dev/null || true",
     "start": "bun run build:css && ng serve",
-    "build": "bun run build:css && ng build",
+    "build": "bun run build:css && ng build && bun run build:post",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
