@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Money Masterclass | 100-Page Operating Manual</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+    <!-- Google Fonts: Outfit (UI), Newsreader (Prose Serif), JetBrains Mono (Code/Mono) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS Engine CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: ['selector', '[data-theme="dark"]'],
+        theme: {
+          extend: {
+            colors: {
+              ink: {
+                bg: 'var(--ink-bg)',
+                surface: 'var(--ink-surface)',
+                raised: 'var(--ink-surface-raised)',
+                border: 'var(--ink-border)',
+                text: 'var(--ink-text)',
+                muted: 'var(--ink-text-muted)',
+                faint: 'var(--ink-text-faint)',
+                accent: {
+                  DEFAULT: 'var(--ink-accent)',
+                  hover: '#1d4ed8',
+                  contrast: 'var(--ink-accent-contrast)',
+                },
+              },
+            },
+            fontFamily: {
+              sans: ['Outfit', 'system-ui', 'sans-serif'],
+              serif: ['Newsreader', 'Georgia', 'serif'],
+              mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+            },
+          },
+        },
+      }
+    </script>
+  </head>
+  <body class="bg-ink-bg text-ink-text font-sans antialiased selection:bg-blue-500/20">
+    <app-root></app-root>
+  </body>
+</html>

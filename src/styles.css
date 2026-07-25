@@ -1,0 +1,255 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Ink Numeric';
+  src: local('Monaco'), local('SF Mono'), local('Menlo');
+  unicode-range: U+0030-0039;
+}
+
+:root {
+  --ink-bg: #f8fafc;
+  --ink-surface: #ffffff;
+  --ink-surface-raised: #f1f5f9;
+  --ink-border: #e2e8f0;
+
+  --ink-text: #0f172a;
+  --ink-text-muted: #334155;
+  --ink-text-faint: #64748b;
+
+  --ink-accent: #2563eb;
+  --ink-accent-hover: #1d4ed8;
+  --ink-accent-contrast: #ffffff;
+
+  --prose-size: 1.05rem;
+  --prose-line-height: 1.8;
+  --header-height: 56px;
+  --rail-width: 270px;
+  --scale-width: 64px;
+}
+
+[data-theme="dark"] {
+  --ink-bg: #0b0f17;
+  --ink-surface: #131924;
+  --ink-surface-raised: #1c2433;
+  --ink-border: #283347;
+
+  --ink-text: #f8fafc;
+  --ink-text-muted: #94a3b8;
+  --ink-text-faint: #64748b;
+
+  --ink-accent: #3b82f6;
+  --ink-accent-hover: #60a5fa;
+  --ink-accent-contrast: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+[data-theme="dark"] html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--ink-bg);
+  color: var(--ink-text);
+  font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+/* Explicit SVG Icon Sizing Fallbacks */
+svg {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+svg.w-3 { width: 0.75rem; }
+svg.w-3\.5 { width: 0.875rem; }
+svg.w-4 { width: 1rem; }
+svg.w-5 { width: 1.25rem; }
+svg.w-6 { width: 1.5rem; }
+svg.h-3 { height: 0.75rem; }
+svg.h-3\.5 { height: 0.875rem; }
+svg.h-4 { height: 1rem; }
+svg.h-5 { height: 1.25rem; }
+svg.h-6 { height: 1.5rem; }
+
+:focus-visible {
+  outline: 2px solid var(--ink-accent);
+  outline-offset: 2px;
+}
+
+::selection {
+  background-color: rgba(37, 99, 235, 0.25);
+}
+
+/* Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--ink-border);
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--ink-text-faint);
+}
+
+.glassmorphism {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background-color: rgba(248, 250, 252, 0.85);
+  border-bottom: 1px solid var(--ink-border);
+}
+
+[data-theme="dark"] .glassmorphism {
+  background-color: rgba(11, 15, 23, 0.85);
+}
+
+/* Custom Editorial Prose Styling */
+.prose-custom {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: var(--prose-size);
+  line-height: var(--prose-line-height);
+  letter-spacing: -0.003em;
+  color: var(--ink-text);
+  transition: font-size 0.2s ease, line-height 0.2s ease;
+}
+
+.mono-label {
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.icon-btn {
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+.icon-btn:hover {
+  transform: translateY(-1px) scale(1.05);
+}
+.icon-btn:active {
+  transform: scale(0.95);
+}
+
+/* Enhanced Markdown Headings & Content */
+.prose-custom h1, .prose-custom h2, .prose-custom h3, .prose-custom h4 {
+  font-family: 'Outfit', sans-serif;
+  color: var(--ink-text);
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+
+.prose-custom h2 {
+  font-size: 1.4rem;
+  border-bottom: 1px solid var(--ink-border);
+  padding-bottom: 0.5rem;
+  color: var(--ink-accent);
+}
+
+.prose-custom h3 {
+  font-size: 1.15rem;
+  color: var(--ink-text);
+}
+
+.prose-custom p {
+  margin-bottom: 1.25rem;
+}
+
+.prose-custom strong {
+  color: var(--ink-text);
+  font-weight: 600;
+}
+
+.prose-custom table {
+  width: 100%;
+  margin: 1.75rem 0;
+  border-collapse: collapse;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.88rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.prose-custom th {
+  background-color: var(--ink-surface-raised);
+  color: var(--ink-text);
+  font-weight: 700;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--ink-border);
+}
+
+.prose-custom td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--ink-border);
+  color: var(--ink-text-muted);
+}
+
+.prose-custom blockquote {
+  border-left: 4px solid var(--ink-accent);
+  background-color: var(--ink-surface-raised);
+  padding: 1rem 1.25rem;
+  border-radius: 0 8px 8px 0;
+  margin: 1.5rem 0;
+  color: var(--ink-text-muted);
+  font-style: italic;
+}
+
+.prose-custom ul, .prose-custom ol {
+  margin: 1.25rem 0;
+  padding-left: 1.75rem;
+}
+
+.prose-custom li {
+  margin-bottom: 0.5rem;
+}
+
+/* Callout Box Enhancements */
+.callout-box {
+  padding: 1.25rem;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  border: 1px solid var(--ink-border);
+  background-color: var(--ink-surface);
+}
+
+/* Micro Animations */
+@keyframes flash {
+  0% { background-color: rgba(37, 99, 235, 0.2); }
+  100% { background-color: transparent; }
+}
+.animate-flash {
+  animation: flash 2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-scale-up {
+  animation: scaleUp 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
